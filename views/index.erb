@@ -3,12 +3,16 @@
     <h2>Results</h2>      
       <thead>
         <tr>
-          <th>Subject</th>
+          <th>id</th>
+          <th>subject</th>
         </tr>
       </thead>
       <tbody>
       <%@tickets.each do |ticket|%>
-      <tr><td><%= ticket["subject"]%></tr></td>
+      <tr>
+        <td><%= ticket["id"]%></td>
+        <td><a href='/ticket/<%= ticket["id"]%>'><%= ticket["subject"]%></a></td>
+      </tr>
       <%end%>
       </tbody>
   </table>
