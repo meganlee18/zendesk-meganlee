@@ -4,10 +4,19 @@ require "pry"
 require "httparty"
 
 get "/" do
-  url = "https://meganlee18.zendesk.com/api/v2/tickets.json"
+  url = "https://meganlee18.zendesk.com/api/v2/tickets.json?page=1&per_page=25"
+
+  while url.nil?
+    # do something with the response
+    # but don't dally
+    console.log(url)
+  end
+
   result = HTTParty.get(url, :basic_auth => {username: "wylee14@gmail.com", password: "Meganlee123"})
   all_tickets = result.parsed_response
   @tickets = all_tickets["tickets"]
+
+  #https://meganlee18.zendesk.com/api/v2/tickets.json?page=2&per_page=25
 
   erb :index
 end
