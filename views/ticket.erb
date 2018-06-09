@@ -1,23 +1,24 @@
 
  <div class="container">
   <table class="table">    
-      <thead>
+      <tbody>
         <tr>
           <th>Ticket ID</th>
-          <th>Date Created</th>
-          <th>Requester ID</th>
-          <th>Ticket Description</th>
+          <td><%= @ticket_id %></td>
         </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td><%= @ticket_id %></td>
-        <td><%= @date_created %></td>
-        <td><%= @requester_id %></td>
-        <td><%= @ticket_description %></td>
-      </tr>
+        <tr>  
+          <th>Date Created</th>
+          <td><%= @date_created %></td>
+        </tr>
+        <tr>
+          <th>Requester ID</th>
+          <td><%= @requester_id %></td>
+        </tr>
+        <tr>
+          <th>Ticket Description</th>
+          <td><%= @ticket_description %></td>
+        </tr>
       </tbody>
   </table>
-</div>
-
 <a href="/">Back to all tickets</a>
+</div>
