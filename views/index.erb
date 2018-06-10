@@ -1,3 +1,4 @@
+
 <div class="container">
   <table class="table">
     <h2>Results</h2>
@@ -21,14 +22,14 @@
   </table>
 </div>
 
-<%# create a loop from 1 to @num_of_pages for pagination numbers %>
 
 <div class="container">
   <ul class="pagination">
 
-  <% for x in 1..@num_of_pages %>
-    <li><a href="?page=<%= x %>"><%= x %></a></li>
+  <%# create a loop from 1 to @num_of_pages for pagination numbers %>
+  <% for pg_num in 1..@num_of_pages %>
+    <li><a href="?page=<%= pg_num %>"><%= pg_num %></a></li>
   <% end %>
-  
+
   </ul>
 </div>
