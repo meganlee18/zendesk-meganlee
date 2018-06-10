@@ -11,6 +11,8 @@ get "/" do
   @tickets = all_tickets["tickets"]
   @ticket_count = all_tickets["count"]
 
+  @num_of_pages = num_of_pages(@ticket_count)
+
   erb :index
 end
 
@@ -28,6 +30,13 @@ get "/ticket/:id" do
   erb :ticket
 end
 
+private
+
+def num_of_pages(ticket_count)
+  #rounds up to nearest number
+  (ticket_count / 25.to_f).ceil
+end
+
 #create a loop that calls the url
 # first_page = 1
 # last_page = 6
@@ -39,10 +48,3 @@ end
 # end
 
 #page_number = params[:number]
-
-#things to do:
-
-#1. need to define function/method for calculating how many tickets per page
-#2. This means total % 5 = 0 there will be 5 pages; if remainder is 1, add another page
-#3.  4 pages of 25 data each, plus one page with 1 data
-#4. Pass page number into a links (index)
