@@ -3,19 +3,13 @@ require "sinatra/reloader"
 require "pry"
 require "httparty"
 
-basic_auth = {username: "wylee14@gmail.com", password: "Meganlee123"}
+disable :raise_errors
+disable :show_exceptions
 
 get "/" do
-  page_number = 1
+  url = "https://meganlee18.zendesk.com/api/v2/tickets.json?page=#{params[:page]}&per_page=25"
 
-  if params[:page]
-    page_number = params[:page]
-  end
-
-  url = "https://meganlee18.zendesk.com/api/v2/tickets.json?page=#{page_number}&per_page=25"
-
-  result = HTTParty.get(url, basic_auth: basic_auth)
-  all_tickets = result.parsed_response
+  all_tickets = call_api(url)
   @tickets = all_tickets["tickets"]
   @ticket_count = all_tickets["count"]
 
@@ -26,8 +20,7 @@ end
 
 get "/ticket/:id" do
   url = "https://meganlee18.zendesk.com/api/v2/tickets/#{params[:id]}.json"
-  result = HTTParty.get(url, basic_auth: basic_auth)
-  all_tickets = result.parsed_response
+  all_tickets = call_api(url)
 
   @tickets = all_tickets["ticket"]
   @ticket_id = all_tickets["ticket"]["id"]
@@ -38,9 +31,31 @@ get "/ticket/:id" do
   erb :ticket
 end
 
+error do
+  @error = "Sorry, we are unable to process the request now. Please try again later."
+  erb :error
+end
+
 private
 
 def num_of_pages(ticket_count)
   #rounds up to nearest number
   (ticket_count / 25.to_f).ceil
+end
+
+def call_api(url)
+  begin
+    #this is where errors are defined
+    basic_auth = {username: "wylee14@gmail.com", password: "Meganlee123"}
+    result = HTTParty.get(url, basic_auth: basic_auth)
+    response = result.parsed_response
+    if response["error"]
+      raise "Error calling API"
+    else
+      response
+    end
+  rescue
+    #this is where errors are being handled
+    raise "Oh no! There is an error, try again later."
+  end
 end
