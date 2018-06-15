@@ -1,5 +1,3 @@
-Just testing
-
 source 'https://rubygems.org'
 
 gem 'sinatra'
