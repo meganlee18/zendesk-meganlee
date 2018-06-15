@@ -1,6 +1,6 @@
 # Ticket Viewer
 This project uses Sinatra version (2.0.3).
-View my app here: -url link to be provided after deployment-
+View my app here: https://pure-badlands-16182.herokuapp.com/
 
 ## About Ticket Viewer
 - Connect to the Zendesk API
