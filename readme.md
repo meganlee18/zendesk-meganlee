@@ -10,11 +10,13 @@ View my app here: -url link to be provided after deployment-
 
 ## Installation process
 - First, clone the repository:
+```
 $ git clone https://github.com/meganlee18/zendesk-meganlee.git
-
+```
 - You can install the required gems for the project by running bundle install:
+```
 $ bundle install
-
+```
 
 ## Testing the app
 - To test the app run the following command:
