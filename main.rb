@@ -2,8 +2,8 @@ require "sinatra"
 require "pry"
 require "httparty"
 
-# disable :raise_errors
-# disable :show_exceptions
+disable :raise_errors
+disable :show_exceptions
 
 get "/" do
   url = "https://meganlee18.zendesk.com/api/v2/tickets.json?page=#{params[:page]}&per_page=25"
