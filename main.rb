@@ -26,6 +26,7 @@ get "/ticket/:id" do
   @date_created = all_tickets["ticket"]["created_at"]
   @requester_id = all_tickets["ticket"]["requester_id"]
   @ticket_description = all_tickets["ticket"]["description"]
+  @ticket_status = all_tickets["ticket"]["status"]
 
   erb :ticket
 end
