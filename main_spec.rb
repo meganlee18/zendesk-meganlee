@@ -57,13 +57,13 @@ describe "num_of_pages" do
   end
 end
 
-describe "when zendesk api return error" do
+describe "when api is down" do
   it "raises" do
     expect { call_api("http://wrong-url.com") }.to raise_error(RuntimeError, "Oh no! There is an error, try again later.")
   end
 end
 
-describe "when api is down" do
+describe "when api returns response with error message" do
   it "raises" do
     #response["error"] -> wrong authentication should trigger this error
     # expect {  }.to raise_error(RuntimeError, "Error calling API")
