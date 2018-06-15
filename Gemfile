@@ -7,3 +7,4 @@ gem 'httparty'
 gem 'shotgun'
 gem "rack-test", require: "rack/test"
 gem "rspec"
+gem "ruby", '2.4.4'
