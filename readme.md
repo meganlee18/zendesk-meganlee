@@ -20,18 +20,22 @@ $ bundle install
 
 ## Testing the app
 - To test the app run the following command:
+```
 $ rspec main_spec.rb
+```
 
 ## Using the app
 - To start the server, run the following command:
+```
 $ ruby main.rb
+```
 - The server will run on localhost: 4567
 
 ## Technologies used
 - Built using the Sinatra framework
 - CSS layout uses bootstrap library
 
-##Ruby gems used
+## Ruby gems used
 - sinatra
 - sintra-contrib
 - pry
