@@ -1,6 +1,7 @@
 require "sinatra"
 require "pry"
 require "httparty"
+require "sinatra/reloader"
 
 disable :raise_errors
 disable :show_exceptions
