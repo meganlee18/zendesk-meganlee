@@ -62,12 +62,3 @@ describe "when api is down" do
     expect { call_api("http://wrong-url.com") }.to raise_error(RuntimeError, "Oh no! There is an error, try again later.")
   end
 end
-
-describe "when api returns response with error message" do
-  it "raises" do
-    #response["error"] -> wrong authentication should trigger this error
-    # expect {  }.to raise_error(RuntimeError, "Error calling API")
-  end
-end
-
-#how to stub HTTParty in RSPEC

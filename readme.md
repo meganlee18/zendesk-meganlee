@@ -1,4 +1,5 @@
 # Ticket Viewer
+This project uses Sinatra version (2.0.3).
 View my app here: -url link to be provided after deployment-
 
 ## About Ticket Viewer
@@ -19,7 +20,7 @@ $ bundle install
 ```
 
 ## Testing the app
-- To test the app run the following command:
+- To run tests, run the following command:
 ```
 $ rspec main_spec.rb
 ```
@@ -35,7 +36,7 @@ $ ruby main.rb
 - Built using the Sinatra framework
 - CSS layout uses bootstrap library
 
-## Ruby gems used
+## Ruby gems used in the project
 - sinatra
 - sintra-contrib
 - pry
