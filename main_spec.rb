@@ -17,6 +17,7 @@ describe "index" do
   it "should load the home page" do
     get "/"
     last_response.status.should == 200
+    #last_response.ok?
   end
 
   it "should return tickets" do
@@ -27,6 +28,8 @@ describe "index" do
 
   it "should change page numbers" do
     get "/?page=2"
+    # get "/", :page => 2
+
     last_response.status.should == 200
   end
 
@@ -57,8 +60,44 @@ describe "num_of_pages" do
   end
 end
 
+describe "begin_id" do
+  it "should display the beginning id to be returned on page" do
+    display_starting_id(1).should == 1
+  end
+end
+
+describe "ending_id" do
+  it "should display the ending id to be returned on page", :focus => true do
+    display_ending_id(1, 101).should == 25
+  end
+end
+
 describe "when api is down" do
   it "raises" do
-    expect { call_api("http://wrong-url.com") }.to raise_error(RuntimeError, "Oh no! There is an error, try again later.")
+    expect { call_api("http://wrong-url.com", "get") }.to raise_error(RuntimeError, "Oh no! There is an error, try again later.")
+  end
+end
+
+describe "search" do
+  it "should load the search page" do
+    get "/search", :ticket => 1
+    last_response.status.should == 200
+  end
+
+  it "should return search results" do
+    get "/search", :ticket => 1
+    expect(last_response.body).to include ("Search Results")
+  end
+end
+
+describe "update" do
+  it "should load the update ticket page" do
+    get "/ticket/1/update"
+    last_response.status == 200
+  end
+
+  it "should return change/update details" do
+    get "/ticket/1/update"
+    expect(last_response.body).to include ("Change/Update Ticket")
   end
 end

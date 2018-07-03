@@ -1,0 +1,23 @@
+<div class="container">
+
+<h3>Search Results</h3>
+<table class="table">   
+      <thead> 
+        <tr>
+          <th>Ticket ID</th>
+          <th>Subject</th>
+        </tr>
+      <tbody>
+          <%@tickets.each do |ticket| %>
+          <tr>
+            <td><%= ticket["id"] %></td>
+            <td><a href="/ticket/<%= ticket["id"]%>"><%= ticket["subject"] %></a></td>
+          </tr>
+          <% end %>
+        
+      </tbody>
+</table>
+<a href="/">Back to home</a>
+
+
+</div>
