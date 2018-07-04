@@ -46,12 +46,7 @@ end
 
 put "/ticket/:id/update" do
   url = "https://meganlee18.zendesk.com/api/v2/tickets/#{params[:id]}.json"
-  tickets = call_api(url, "put")
-
-  # curl https://meganlee18.zendesk.com/api/v2/tickets/2.json \
-  # -H "Content-Type: application/json" \
-  # -d '{"ticket": {"status": "closed"}}' \
-  # -v -u wylee14@gmail.com:Meganlee123 -X PUT
+  call_api(url, "put")
 
   redirect to("/ticket/#{params[:id]}")
 end
@@ -94,16 +89,16 @@ def call_api(url, method)
       result = HTTParty.get(url, basic_auth: basic_auth)
     elsif method == "put"
       data = {
-        ticket: {
-          status: "#{params[:status]}".downcase,
-        },
+          ticket: {
+              status: "#{params[:status]}".downcase,
+          },
       }
       puts data
 
       result = HTTParty.put(url, {
-        body: data.to_json,
-        headers: {"Content-Type": "application/json"},
-        basic_auth: basic_auth,
+          body: data.to_json,
+          headers: {"Content-Type": "application/json"},
+          basic_auth: basic_auth,
       })
 
       puts result.body

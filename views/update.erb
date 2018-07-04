@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ticket Viewer</title>
+</head>
+<body>
+
+<div class="container">
+  <h3>Change/Update Ticket</h3>
+  <table class="table">    
+      <tbody>
+        <tr>
+          <th>Ticket ID</th>
+          <td><%= @ticket_id%><td>
+        </tr>
+        <tr>
+          <th>Ticket Status</th>
+          <td>
+
+          <form action="/ticket/<%=@ticket_id%>/update" method="post">
+          <input type='hidden' name='_method' value='put'>
+            <select name="status">
+              <option>Open</option>
+              <option>Pending</option>
+              <option>Solved</option>
+              <option>Closed</option>
+            </select>
+            <button>Submit</button>
+          </form>
+
+          </td>
+        </tr>
+        </tbody>
+        </table>
+        <a href="/ticket/<%=@ticket_id%>">Go back</a>
+</div>
+  
+</body>
+</html>
