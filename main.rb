@@ -2,6 +2,7 @@ require "sinatra"
 require "sinatra/reloader"
 require "pry"
 require "httparty"
+require "byebug"
 
 # disable :raise_errors
 # disable :show_exceptions
