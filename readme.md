@@ -44,3 +44,7 @@ $ ruby main.rb
 - shotgun
 - rack-test
 - rspec
+
+## Improvements to the app 
+- Added search bar functionality to allow users to search tickets by ticket description
+- Allow users to update individual ticket status. Applicable statuses include "Open", "Pending", "Closed", "Solved"
