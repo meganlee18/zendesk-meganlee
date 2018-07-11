@@ -1,6 +1,5 @@
 require File.dirname(__FILE__) + "/main.rb"
 require "rack/test"
-require "pry"
 require "httparty"
 
 #methods that allow the use of "get '/' "
