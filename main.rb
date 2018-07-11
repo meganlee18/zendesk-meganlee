@@ -1,8 +1,8 @@
 require "sinatra"
 require "httparty"
 
-# disable :raise_errors
-# disable :show_exceptions
+disable :raise_errors
+disable :show_exceptions
 
 get "/" do
   url = "https://meganlee18.zendesk.com/api/v2/tickets.json?page=#{params[:page]}&per_page=25"
@@ -41,6 +41,7 @@ get "/ticket/:id/update" do
 end
 
 #update individual ticket
+#this functionality is only available for active Zendesk accounts
 
 put "/ticket/:id/update" do
   url = "https://meganlee18.zendesk.com/api/v2/tickets/#{params[:id]}.json"
@@ -49,7 +50,7 @@ put "/ticket/:id/update" do
   redirect to("/ticket/#{params[:id]}")
 end
 
-#Search ID
+#create search functionality by ticket description
 get "/search" do
   url = "https://meganlee18.zendesk.com/api/v2/search.json?query=#{params[:ticket]}"
   all_tickets = call_api(url, "get")
@@ -59,10 +60,10 @@ get "/search" do
   erb :search
 end
 
-# error do
-#   @error = "Sorry, we are unable to process the request now. Please try again later."
-#   erb :error
-# end
+error do
+  @error = "Sorry, we are unable to process the request now. Please try again later."
+  erb :error
+end
 
 private
 
